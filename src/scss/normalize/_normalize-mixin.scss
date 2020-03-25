@@ -1,3 +1,22 @@
+a {
+  text-decoration: none;
+  outline: none;
+  color: inherit;
+}
+button {
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  margin: 0;
+}
 // Helper function for the normalize() mixin.
 @function _normalize-include($section, $exclude: null) {
   // Initialize the global variables needed by this function.
@@ -85,6 +104,7 @@
     body {
       margin: 0;
     }
+
 
     /**
      * Add the correct display in IE 9-.
@@ -268,6 +288,7 @@
     a {
       background-color: transparent; /* 1 */
       -webkit-text-decoration-skip: objects; /* 2 */
+      
     }
   }
 

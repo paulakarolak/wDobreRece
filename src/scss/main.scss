@@ -1,9 +1,116 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap&subset=latin-ext');
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700&display=swap&subset=latin-ext');
 @import 'normalize';
 @import 'settings/fonts';
 @import 'settings/colors';
 
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: $font-base;
+    color: map-get($colors, dark-grey);
+}
+//top section
+.top-section {
+    height: 963px;
+    margin-right: 142px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "hero info";
+  }
+ .hero-main {
+    background: url('../assets/Home-Hero-Image.jpg');
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    grid-area: hero;
+}
+.page-header {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 142px;
+    z-index: 99;
+}
+.page-menu {
+    display: flex;
+    flex-direction: column;
+    a {
+        padding: 9px 20px;
+        border: 0.75px solid transparent;
+    }
+}
+.user-header {
+    display: flex;
+    justify-content: flex-end;
+    a {
+        color: map-get($colors, light-grey);
+        font-size: 14px;
+        &:hover, &:active {
+            border: 0.75px solid map-get($colors, yellow);
+        }
+    }
+}
+.page-nav {
+    display: flex;
+    justify-content: flex-end;
+    a {
+        font-size: 18px;
+        &:hover, &:active {
+            border: 0.75px solid map-get($colors, dark-grey);
+        }
+    }
+}
+.introduction {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    h2 {
+        text-align: center;
+        font-weight: normal;
+        font-size: 38px;
+    }
+}
+.decoration {
+    width: 253px;
+    height: 33px;
+    background: url('../assets/Decoration.svg');
+    background-size: cover;
+}
+.info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tiles {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 65px;
+    .tile-btn {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 36px;
+        font-family: inherit;
+        font-weight: 300;
+        width: 310px;
+        border: 0.75px solid map-get($colors, dark-grey);
+        padding: 13px 0;
+    }
+    .tile-1 {
+        margin-right: 22px;
+    }
+    .tile-2 {
+        margin-left: 22px;
+    }
 }
