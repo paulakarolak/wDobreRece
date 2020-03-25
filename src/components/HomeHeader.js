@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
+import UserHeader from './UserHeader';
 
 export default class HomeHeader extends Component {
     render() {
@@ -7,20 +8,13 @@ export default class HomeHeader extends Component {
             <>
                 <header className="page-header">
                     <div className="page-menu">
-                        <ul className="user-header">
-                            <li>
-                                <Link to="/logowanie">Zaloguj</Link>
-                            </li>
-                            <li>
-                                <Link to="/rejestracja">Załóż konto</Link>
-                            </li>
-                        </ul>
+                        <UserHeader />
                         <ul className="page-nav">
                             <li>
                                 <Link to="/">Start</Link>
                             </li>
                             <li>
-                                <Link to="/">O co chodzi?</Link>
+                                <Link to="steps" smooth={true} duration={1000}>O co chodzi?</Link>
                             </li>
                             <li>
                                 <Link to="/">O nas</Link>
