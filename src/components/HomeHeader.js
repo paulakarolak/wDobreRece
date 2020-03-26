@@ -23,7 +23,7 @@ export default class HomeHeader extends Component {
                                 <Link to="/">Fundacja i organizacje</Link>
                             </li>
                             <li>
-                                <Link to="/">Kontakt</Link>
+                            <Link to="contact" smooth={true} duration={1000}>Kontakt</Link>
                             </li>
                         </ul>
                     </div>
