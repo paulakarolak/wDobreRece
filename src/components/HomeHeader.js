@@ -17,7 +17,7 @@ export default class HomeHeader extends Component {
                                 <Link to="steps" smooth={true} duration={1000}>O co chodzi?</Link>
                             </li>
                             <li>
-                                <Link to="/">O nas</Link>
+                            <Link to="about" smooth={true} duration={1000}>O nas</Link>
                             </li>
                             <li>
                                 <Link to="/">Fundacja i organizacje</Link>
