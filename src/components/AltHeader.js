@@ -20,7 +20,7 @@ export default class AltHeader extends Component {
                             <Link smooth to="/#about">O nas</Link>
                             </li>
                             <li>
-                                <Link smooth to="/">Fundacja i organizacje</Link>
+                                <Link smooth to="/#entities">Fundacja i organizacje</Link>
                             </li>
                             <li>
                             <Link smooth to="/#contact">Kontakt</Link>

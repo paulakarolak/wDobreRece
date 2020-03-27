@@ -4,6 +4,7 @@ import HomeThreeColumns from './HomeThreeColumns';
 import Steps from './Steps';
 import AboutUs from './AboutUs';
 import Contact from './Contact';
+import Entities from './Entities';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
         <HomeThreeColumns />
         <Steps />
         <AboutUs />
+        <Entities />
         <Contact />
         </>
     )
