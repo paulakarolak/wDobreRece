@@ -260,10 +260,10 @@ body {
         padding: 31px 22px 31px 0;
         width: 1344px;
         display: flex;
-        align-content: center;
+        align-items: center;
         justify-content: space-between;
         border-bottom: 2px solid lighten(map-get($colors, light-grey),30%);
-        &:last-child {
+        &:last-of-type {
             border-bottom: none;
         }
         h4 {
@@ -285,6 +285,25 @@ body {
         }
     }
 }
+
+//pagination
+.pagination {
+    display: flex;
+    justify-content: center;
+    .btn-page {
+        font-size: 18px;
+        font-family: inherit;
+        padding: 13px 15px;
+        border: 1px solid lighten(map-get($colors, light-grey),30%);
+        margin: 42px 20px 0 20px;
+    }
+}
+// <ul className="pagination">
+// {pageNumbers.map(number => (
+//     <li key={number} className="page-item">
+//         <button onClick={() => paginate(number)} className="btn-page">
+//             {number}
+//         </button>
 
 
 //login

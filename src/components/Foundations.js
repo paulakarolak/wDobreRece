@@ -1,40 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import foundations from '../data-foundations';
+import Entity from './Entity';
+import Pagination from './Pagination';
 
 const Foundations = () => {
+    const [entities] = useState(foundations);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [entitiesPerPage] = useState(3);
+
+    //get current entities
+    const indexOfLastEntity = currentPage * entitiesPerPage;
+    const indexOfFirstEntity = indexOfLastEntity - entitiesPerPage;
+    const currentEntity = entities.slice(indexOfFirstEntity, indexOfLastEntity);
+
+    //change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     return (
         <section className="entity-list" id="foundations">
             <div className="entity-description">
                 <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.</p>
             </div>
-            <div className="entity-details">
-                <div className="entity-attributes">
-                    <h4 className="entity-name">Fundacja "Dbam o Zdrowie"</h4>
-                    <h6 className="entity-mission">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</h6>
-                </div>
-                <div className="entity-items">
-                    <h5 className="item-list">ubrania, jedzenie, sprzęt AGD, meble, zabawki</h5>
-                </div>
-            </div>
-            <div className="entity-details">
-                <div className="entity-attributes">
-                    <h4 className="entity-name">Fundacja “Dla dzieci”</h4>
-                    <h6 className="entity-mission">Cel i misja: Pomoc dzieciom z ubogich rodzin.</h6>
-                </div>
-                <div className="entity-items">
-                    <h5 className="item-list">ubrania, meble, zabawki</h5>
-                </div>
-            </div>
-            <div className="entity-details">
-                <div className="entity-attributes">
-                    <h4 className="entity-name">Fundacja “Bez domu”</h4>
-                    <h6 className="entity-mission">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.</h6>
-                </div>
-                <div className="entity-items">
-                    <h5 className="item-list">ubrania, jedzenie, ciepłe koce</h5>
-                </div>
-            </div>
-            
-            
+                <Entity entities={currentEntity} />
+                <Pagination entitiesPerPage={entitiesPerPage} totalEntities={entities.length} paginate={paginate}/>
         </section>
     )
 }
