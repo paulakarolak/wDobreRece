@@ -1,11 +1,11 @@
 import React from 'react';
-import HomeHeader from './HomeHeader';
+import AltHeader from './AltHeader';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
     return (
         <>
-            <HomeHeader />
+            <AltHeader />
             <section className="register-section">
                 <h2 className="section-header">Załóż konto</h2>
                 <div className="decoration"></div>

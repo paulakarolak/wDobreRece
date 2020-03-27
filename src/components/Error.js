@@ -1,13 +1,13 @@
 import React from 'react';
-import AltHeader from './AltHeader';
+import HomeHeader from './HomeHeader';
 import { Link } from 'react-router-dom';
 
-const LoggedOut = () => {
+const Error = () => {
     return (
         <>
-            <AltHeader />
+            <HomeHeader />
             <section className="logout-section">
-                <h2 className="section-header">Wylogowanie nastąpiło<br />pomyślnie!</h2>
+                <h2 className="section-header">Strona o podanym adresie<br />nie istnieje.</h2>
                 <div className="decoration"></div>
                     <Link className="tile" to="/">
                         <button className="btn-alt active">
@@ -19,4 +19,4 @@ const LoggedOut = () => {
     )
 }
 
-export default LoggedOut;
+export default Error;

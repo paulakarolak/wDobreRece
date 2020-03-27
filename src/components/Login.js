@@ -1,11 +1,11 @@
 import React from 'react';
-import HomeHeader from './HomeHeader';
+import AltHeader from './AltHeader';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
         <>
-            <HomeHeader />
+            <AltHeader />
             <section className="login-section">
                 <h2 className="section-header">Zaloguj się</h2>
                 <div className="decoration"></div>
