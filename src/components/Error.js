@@ -1,11 +1,11 @@
 import React from 'react';
-import HomeHeader from './HomeHeader';
+import AltHeader from './AltHeader';
 import { Link } from 'react-router-dom';
 
 const Error = () => {
     return (
         <>
-            <HomeHeader />
+            <AltHeader />
             <section className="logout-section">
                 <h2 className="section-header">Strona o podanym adresie<br />nie istnieje.</h2>
                 <div className="decoration"></div>
