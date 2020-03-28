@@ -208,6 +208,7 @@ body {
             letter-spacing: -0.6px;
             padding: 55px 0 40px 0;
             text-align: center;
+            width: 657px;
         }
         .signature {
             width: 100%;
@@ -363,6 +364,15 @@ body {
 .active {
     border: 0.75px solid map-get($colors, dark-grey);
 }
+.error {
+    border-bottom: 1px solid red!important;
+}
+.error-message {
+    font-size: 12px;
+    padding-top: 6px;
+    color: red;
+    font-weight: bold;
+}
 .form-area, .contact-form-area {
     width: 385px;
     background-color: map-get($colors, white);
@@ -385,6 +395,7 @@ body {
         border-bottom: 1px solid map-get($colors, light-grey);
         font-family: inherit;
         padding-top: 30px;
+
     }
     .form-pass {
         margin-top: 31px;
