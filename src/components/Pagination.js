@@ -21,3 +21,5 @@ const Pagination = ({ entitiesPerPage, totalEntities, paginate }) => {
 }
 
 export default Pagination;
+
+

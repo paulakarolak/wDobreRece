@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Foundations from './Foundations';
+import Organizations from './Organizations';
+import Collections from './Collections';
 
 const Entities = () => {
     return (
@@ -8,24 +10,16 @@ const Entities = () => {
             <section className="entities-section" id="entities">
                 <h2 className="section-header">Komu pomagamy?</h2>
                 <div className="decoration"></div>
-                <div className="entities-buttons">
-                    <Link className="tile" to="/">
-                        <button className="btn-alt active">
-                            Fundacjom
-                        </button>
-                    </Link>
-                    <Link className="tile" to="/">
-                        <button className="btn-alt">
-                            Organizacjom<br />pozarządowym
-                        </button>
-                    </Link>
-                    <Link className="tile" to="/">
-                        <button className="btn-alt">
-                            Lokalnym<br />zbiórkom
-                        </button>
-                    </Link>
-                </div>
-                <Foundations />
+                <Tabs defaultIndex={1} >
+                    <TabList>
+                        <Tab>Fundacjom</Tab>
+                        <Tab>Organizacjom<br />pozarządowym</Tab>
+                        <Tab>Lokalnym<br />zbiórkom</Tab>
+                    </TabList>
+                    <TabPanel><Foundations /></TabPanel>
+                    <TabPanel><Organizations /></TabPanel>
+                    <TabPanel><Collections /></TabPanel>
+                </Tabs>
             </section>
         </>
     )

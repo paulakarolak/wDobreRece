@@ -228,20 +228,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .entities-buttons {
-        margin-top: 51px;
-        width: 750px;
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 80px;
-        .btn-alt {
-            height: 79px;
-            width: 208px;
-            font-size: 24px;
-            font-weight: normal;
-            padding: 0;
-            margin: 0;
-        }
+    .decoration {
+        margin-bottom: 51px;
     }
     .entity-list {
         display: flex;
@@ -286,6 +274,56 @@ body {
     }
 }
 
+//tabs
+.react-tabs {
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    &__tab-list {
+        width: 750px;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 69px;
+    }
+  
+    &__tab {
+        height: 79px;
+        width: 208px;
+        font-size: 24px;
+        list-style: none;
+        text-align: center;
+        border: 0.75px solid transparent;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+  
+      &--selected {
+        border-color: map-get($colors, dark-grey)
+      }
+  
+      &--disabled {
+        cursor: default;
+      }
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  
+    &__tab-panel {
+      display: none;
+  
+      &--selected {
+        display: block;
+      }
+    }
+  }
+
+
 //pagination
 .pagination {
     display: flex;
@@ -294,17 +332,13 @@ body {
         font-size: 18px;
         font-family: inherit;
         padding: 13px 15px;
-        border: 1px solid lighten(map-get($colors, light-grey),30%);
+        border: 1px solid transparent;
         margin: 42px 20px 0 20px;
+        &:hover {
+            border: 1px solid lighten(map-get($colors, light-grey),30%);
+        }
     }
 }
-// <ul className="pagination">
-// {pageNumbers.map(number => (
-//     <li key={number} className="page-item">
-//         <button onClick={() => paginate(number)} className="btn-page">
-//             {number}
-//         </button>
-
 
 //login
 .login-section, .register-section, .logout-section {
@@ -458,6 +492,7 @@ body {
             width: 150px;
             height: 50px;
             margin: 0;
+            padding: 0;
         }
     }
 }
