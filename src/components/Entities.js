@@ -10,7 +10,7 @@ const Entities = () => {
             <section className="entities-section" id="entities">
                 <h2 className="section-header">Komu pomagamy?</h2>
                 <div className="decoration"></div>
-                <Tabs defaultIndex={1} >
+                <Tabs defaultIndex={0} >
                     <TabList>
                         <Tab>Fundacjom</Tab>
                         <Tab>Organizacjom<br />pozarządowym</Tab>
