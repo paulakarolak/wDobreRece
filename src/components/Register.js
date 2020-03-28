@@ -66,6 +66,9 @@ export default class Register extends Component {
             case 'password':
                 formErrors.password = value.length < 6 ? 'Podane hasło jest za krótkie!' : "";
                 break;
+            case 'passwordRepeat':
+                formErrors.passwordRepeat = value.length < 6 ? 'Podane hasło jest za krótkie!' : "";
+                break;
             default:
                 break;
         }
@@ -125,7 +128,10 @@ export default class Register extends Component {
                                     autoComplete="off"
                                     noValidate
                                     onChange={this.handleChange} />
-                                     {passwordRepeat != password && (
+                                {formErrors.passwordRepeat.length > 0 && (
+                                    <span className="error-message">{formErrors.passwordRepeat}</span>
+                                )}
+                                {passwordRepeat != password && (
                                     <span className="error-message">Hasła muszą być takie same!</span>
                                 )}
                             </div>
