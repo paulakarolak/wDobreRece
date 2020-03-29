@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import contactImg from '../assets/Background-Contact-Form.jpg';
 import Copyright from './Copyright'
+import axios from 'axios';
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -37,6 +38,7 @@ export default class Register extends Component {
             },
         }
     }
+
     handleSubmit = e => {
         e.preventDefault();
 
@@ -49,6 +51,14 @@ export default class Register extends Component {
             Email: ${this.state.email}
             Wiadomość: ${this.state.message}`);
             formSent = true;
+            axios
+                .post('https://fer-api.coderslab.pl/v1/portfolio/contact', this.state)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         } else {
             console.error("Formularz niepoprawny");
             formSent = false;
@@ -63,7 +73,7 @@ export default class Register extends Component {
 
         switch (name) {
             case 'name':
-                formErrors.name = value.length < 6 ? 'Podane imię jest nieprawidłowe!' : "" ;
+                formErrors.name = value.trim().split(" ").length == 1 ? "" : 'Podane imię jest nieprawidłowe!';
                 break;
             case 'email':
                 formErrors.email = emailRegex.test(value) ? "" : 'Podany email jest nieprawidłowy!';
@@ -93,9 +103,9 @@ export default class Register extends Component {
                             name="contact-form"
                             onSubmit={this.handleSubmit}
                             noValidate>
-                                {formSent == true && (
-                                            <span className="success-message">Wiadomość została wysłana!<br />Wkrótce się skontaktujemy.</span>
-                                        )}
+                            {formSent == true && (
+                                <span className="success-message">Wiadomość została wysłana!<br />Wkrótce się skontaktujemy.</span>
+                            )}
                             <div className="contact-form-area">
                                 <div className="rows">
                                     <div className="form-row">
@@ -141,9 +151,9 @@ export default class Register extends Component {
                                         placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                                         noValidate
                                         onChange={this.handleChange}></textarea>
-                                        {formErrors.message.length > 0 && (
-                                            <span className="error-message">{formErrors.message}</span>
-                                        )}
+                                    {formErrors.message.length > 0 && (
+                                        <span className="error-message">{formErrors.message}</span>
+                                    )}
                                 </div>
                             </div>
                             <div className="form-buttons">
