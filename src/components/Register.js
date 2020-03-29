@@ -95,7 +95,7 @@ export default class Register extends Component {
                                 <input
                                     type="email"
                                     className={formErrors.email.length > 0 ? "error" : null}
-                                    id="email"
+                                    id="email-register"
                                     name="email"
                                     autoComplete="off"
                                     noValidate
@@ -109,7 +109,7 @@ export default class Register extends Component {
                                 <input
                                     type="password"
                                     className={formErrors.password.length > 0 ? "error" : null}
-                                    id="password"
+                                    id="password-register"
                                     name="password"
                                     autoComplete="off"
                                     noValidate
@@ -123,7 +123,7 @@ export default class Register extends Component {
                                 <input
                                     type="password"
                                     className={formErrors.passwordRepeat.length > 0 ? "error" : null}
-                                    id="password"
+                                    id="passwordRepeat-register"
                                     name="passwordRepeat"
                                     autoComplete="off"
                                     noValidate

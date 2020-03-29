@@ -365,12 +365,12 @@ body {
     border: 0.75px solid map-get($colors, dark-grey);
 }
 .error {
-    border-bottom: 1px solid red!important;
+    border-bottom: 1px solid map-get($colors, error)!important;
 }
 .error-message {
     font-size: 12px;
     padding-top: 6px;
-    color: red;
+    color: map-get($colors, error);
     font-weight: bold;
 }
 .form-area, .contact-form-area {
@@ -428,7 +428,23 @@ body {
         position: absolute;
         top: 0;
         right: 0;
+        // .decoration {
+        //     margin-bottom
+        // }
+        .contact-form-area {
+            margin-top: 30px;
+        }
     } 
+}
+.success-message {
+    font-size: 16px;
+    padding-top: 6px;
+    color: map-get($colors, success);
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    line-height: 22px;
+    margin-top: 30px;
 }
 .copyright-section {
     width: 100%;
@@ -477,15 +493,15 @@ body {
         }
         .message {
             width: 538px;
-            border-bottom: 2px solid lighten(map-get($colors, light-grey),30%);
             margin-top: 40px;
             textarea {
                 width: 528px;
                 resize: none;
                 background: transparent;
                 color: map-get($colors, dark-grey);
+                border-bottom: 2px solid lighten(map-get($colors, light-grey),30%);
                 font-family: inherit;
-                padding-top: 12px;
+                margin-top: 12px;
                 font-size: 18px;
                 &::placeholder {
                     opacity: 0.26;

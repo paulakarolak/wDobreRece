@@ -1,41 +1,162 @@
-import React from 'react';
+import React, { Component } from 'react';
 import contactImg from '../assets/Background-Contact-Form.jpg';
 import Copyright from './Copyright'
 
-const Contact = () => {
-    return (
-        <section className="contact" id="contact">
-            <div className="contact-background">
-                <img src={contactImg} alt=""></img>
-                <div className="contact-form">
-                    <h2 className="section-header">Skontaktuj się z nami</h2>
-                    <div className="decoration"></div>
-                    <div className="contact-form-area">
-                        <div className="rows">
-                            <div className="form-row">
-                                <label for="name">Wpisz swoje imię</label>
-                                <input type="name" className="name" id="name" name="name" autoComplete="on" placeholder="Krzysztof" />
-                            </div>
-                            <div className="form-row form-pass">
-                                <label for="contact-email">Wpisz swój email</label>
-                                <input type="email" className="contact-email" id="contact-email" name="contact-email" autoComplete="on" placeholder="abc@xyz.pl" />
-                            </div>
-                        </div>
-                        <div className="message">
-                            <label for="message">Wpisz swoją wiadomość</label>
-                            <textarea form="contact-form" id="message" name="message" cols="50" rows="4" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></textarea>
-                        </div>
-                    </div>
-                    <div className="form-buttons">
-                        <button className="btn-alt active">
-                            Wyślij
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <Copyright />
-        </section>
-    )
+const emailRegex = RegExp(
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+);
+
+const formValid = ({ formErrors, ...rest }) => {
+    let valid = true;
+
+    //validate form errors being empty
+    Object.values(formErrors).forEach(val => {
+        val.length > 0 && (valid = false)
+    });
+
+    //validate if the form was filled out
+    Object.values(rest).forEach(val => {
+        val === "" && (valid = false);
+    });
+
+    return valid
 }
 
-export default Contact;
+export default class Register extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            name: "",
+            email: "",
+            message: "",
+            formErrors: {
+                name: "",
+                email: "",
+                message: "",
+            },
+        }
+    }
+    handleSubmit = e => {
+        e.preventDefault();
+
+        const { name, value } = e.target;
+        let formSent = this.state.formSent;
+
+        if (formValid(this.state)) {
+            console.log(`Formularz poprawny:
+            Imię: ${this.state.name}
+            Email: ${this.state.email}
+            Wiadomość: ${this.state.message}`);
+            formSent = true;
+        } else {
+            console.error("Formularz niepoprawny");
+            formSent = false;
+        }
+        this.setState({ formSent, [name]: value }, () => console.log(this.state))
+    }
+
+    handleChange = e => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        let formErrors = this.state.formErrors;
+
+        switch (name) {
+            case 'name':
+                formErrors.name = value.length < 6 ? 'Podane imię jest nieprawidłowe!' : "" ;
+                break;
+            case 'email':
+                formErrors.email = emailRegex.test(value) ? "" : 'Podany email jest nieprawidłowy!';
+                break;
+            case 'message':
+                formErrors.message = value.length < 120 ? 'Wiadomość musi mieć conajmniej 120 znaków!' : "";
+                break;
+            default:
+                break;
+        }
+
+        this.setState({ formErrors, [name]: value }, () => console.log(this.state))
+    }
+
+    render() {
+        const { formErrors } = this.state;
+        const { formSent } = this.state;
+
+        return (
+            <section className="contact" id="contact">
+                <div className="contact-background">
+                    <img src={contactImg} alt=""></img>
+                    <div className="contact-form">
+                        <h2 className="section-header">Skontaktuj się z nami</h2>
+                        <div className="decoration"></div>
+                        <form id="contact-form"
+                            name="contact-form"
+                            onSubmit={this.handleSubmit}
+                            noValidate>
+                                {formSent == true && (
+                                            <span className="success-message">Wiadomość została wysłana!<br />Wkrótce się skontaktujemy.</span>
+                                        )}
+                            <div className="contact-form-area">
+                                <div className="rows">
+                                    <div className="form-row">
+                                        <label for="name">Wpisz swoje imię</label>
+                                        <input
+                                            type="name"
+                                            className={formErrors.name.length > 0 ? "error" : null}
+                                            id="contact-name"
+                                            name="name"
+                                            autoComplete="off"
+                                            placeholder="Krzysztof"
+                                            noValidate
+                                            onChange={this.handleChange} />
+                                        {formErrors.name.length > 0 && (
+                                            <span className="error-message">{formErrors.name}</span>
+                                        )}
+                                    </div>
+                                    <div className="form-row form-pass">
+                                        <label for="contact-email">Wpisz swój email</label>
+                                        <input
+                                            type="email"
+                                            className={formErrors.email.length > 0 ? "error" : null}
+                                            id="contact-email"
+                                            name="email"
+                                            autoComplete="off"
+                                            placeholder="abc@xyz.pl"
+                                            noValidate
+                                            onChange={this.handleChange} />
+                                        {formErrors.email.length > 0 && (
+                                            <span className="error-message">{formErrors.email}</span>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="message">
+                                    <label for="message">Wpisz swoją wiadomość</label>
+                                    <textarea
+                                        form="contact-form"
+                                        className={formErrors.message.length > 0 ? "error" : null}
+                                        id="message"
+                                        name="message"
+                                        cols="50"
+                                        rows="4"
+                                        placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                                        noValidate
+                                        onChange={this.handleChange}></textarea>
+                                        {formErrors.message.length > 0 && (
+                                            <span className="error-message">{formErrors.message}</span>
+                                        )}
+                                </div>
+                            </div>
+                            <div className="form-buttons">
+                                <button className="btn-alt active">
+                                    Wyślij
+                        </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <Copyright />
+            </section>
+        )
+    }
+}
+
