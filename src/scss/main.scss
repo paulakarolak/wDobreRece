@@ -13,6 +13,13 @@ body {
     font-family: $font-base;
     color: map-get($colors, dark-grey);
 }
+.section-header {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 //top section
 .top-section {
     height: 963px;
@@ -434,17 +441,18 @@ body {
         .footer-contact-form-area {
             margin-top: 30px;
         }
+        .section-header {
+            margin-bottom: 36px;
+        }
     } 
 }
 .success-message {
     font-size: 16px;
-    padding-top: 6px;
     color: map-get($colors, success);
     font-weight: bold;
     text-align: center;
     display: block;
     line-height: 22px;
-    margin-top: 30px;
 }
 .footer-copyright-section {
     width: 100%;

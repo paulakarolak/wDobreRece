@@ -3,14 +3,14 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import WeHelpFoundations from './WeHelpFoundations';
 import WeHelpOrganizations from './WeHelpOrganizations';
 import WeHelpCollections from './WeHelpCollections';
+import SectionHeader from './SectionHeader';
 
 export default class WeHelp extends Component {
     render() {
         return (
             <>
                 <section className="we-help-section" id="we-help">
-                    <h2 className="section-header">Komu pomagamy?</h2>
-                    <div className="decoration"></div>
+                    <SectionHeader h2={"Komu pomagamy"} />
                     <Tabs defaultIndex={0} >
                         <TabList>
                             <Tab>Fundacjom</Tab>

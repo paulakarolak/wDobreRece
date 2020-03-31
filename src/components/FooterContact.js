@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ContactImg from '../assets/Background-Contact-Form.jpg';
-import FooterCopyright from './FooterCopyright'
+import FooterCopyright from './FooterCopyright';
+import SectionHeader from './SectionHeader';
 import axios from 'axios';
 
 const emailRegex = RegExp(
@@ -83,8 +84,7 @@ export default class FooterContact extends Component {
                 <div className="footer-contact-background">
                     <img src={ContactImg} alt=""></img>
                     <div className="footer-contact-form">
-                        <h2 className="section-header">Skontaktuj się z nami</h2>
-                        <div className="decoration"></div>
+                        <SectionHeader h2={"Skontaktuj się z nami"} />
                         <form id="footer-contact-form"
                             name="footer-contact-form"
                             onSubmit={this.handleSubmit}

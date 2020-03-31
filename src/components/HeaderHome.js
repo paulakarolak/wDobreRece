@@ -17,13 +17,13 @@ export default class HeaderHome extends Component {
                                 <Link to="four-steps" smooth={true} duration={1000}>O co chodzi?</Link>
                             </li>
                             <li>
-                            <Link to="about" smooth={true} duration={1000}>O nas</Link>
+                                <Link to="about" smooth={true} duration={1000}>O nas</Link>
                             </li>
                             <li>
-                            <Link to="we-help" smooth={true} duration={1000}>Fundacja i organizacje</Link>
+                                <Link to="we-help" smooth={true} duration={1000}>Fundacja i organizacje</Link>
                             </li>
                             <li>
-                            <Link to="footer-contact" smooth={true} duration={1000}>Kontakt</Link>
+                                <Link to="footer-contact" smooth={true} duration={1000}>Kontakt</Link>
                             </li>
                         </ul>
                     </div>

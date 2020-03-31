@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fire from '../config/Fire';
+import SectionHeader from './SectionHeader';
+
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -31,14 +33,14 @@ export default class Register extends Component {
             }
         }
     }
-    register = e =>{
+    register = e => {
         e.preventDefault();
-        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
-        }).then((u)=>{console.log(u)})
-        .catch((error) => {
-            console.log(error);
-          })
-      }
+        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+        }).then((u) => { console.log(u) })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
     // handleSubmit = e => {
     //     e.preventDefault();
     //     if (formValid(this.state)) {
@@ -79,8 +81,7 @@ export default class Register extends Component {
         return (
             <>
                 <section className="register-section">
-                    <h2 className="section-header">Załóż konto</h2>
-                    <div className="decoration"></div>
+                    <SectionHeader h2={"Załóż konto"} />
                     <form id="login-form"
                         name="login-form"
                         onSubmit={this.register}

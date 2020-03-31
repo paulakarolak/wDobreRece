@@ -17,13 +17,13 @@ export default class HeaderAlt extends Component {
                                 <Link smooth to="/#four-steps">O co chodzi?</Link>
                             </li>
                             <li>
-                            <Link smooth to="/#about">O nas</Link>
+                                <Link smooth to="/#about">O nas</Link>
                             </li>
                             <li>
                                 <Link smooth to="/#we-help">Fundacja i organizacje</Link>
                             </li>
                             <li>
-                            <Link smooth to="/#footer-contact">Kontakt</Link>
+                                <Link smooth to="/#footer-contact">Kontakt</Link>
                             </li>
                         </ul>
                     </div>

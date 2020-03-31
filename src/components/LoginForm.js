@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fire from '../config/Fire';
+import SectionHeader from './SectionHeader';
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -67,8 +68,7 @@ export default class Login extends Component {
         return (
             <>
                 <section className="login-section">
-                    <h2 className="section-header">Zaloguj się</h2>
-                    <div className="decoration"></div>
+                    <SectionHeader h2={"Zaloguj się"} />
                     <form id="login-form"
                         name="login-form"
                         onSubmit={this.login}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import SectionHeader from './SectionHeader';
 import step1 from '../assets/Icon-1.svg';
 import step2 from '../assets/Icon-2.svg';
 import step3 from '../assets/Icon-3.svg';
@@ -9,10 +10,7 @@ export default class FourSteps extends Component {
     render() {
         return (
             <section className="four-steps" id="four-steps">
-                <h2 className="section-header">
-                    Wystarczą 4 proste kroki
-                </h2>
-                <div className="decoration"></div>
+                <SectionHeader h2={"Wystarczą 4 proste kroki"} />
                 <div className="user-four-steps">
                     <div className="col">
                         <div className="row">
