@@ -5,16 +5,15 @@ import step2 from '../assets/Icon-2.svg';
 import step3 from '../assets/Icon-3.svg';
 import step4 from '../assets/Icon-4.svg';
 
-
-export default class Steps extends Component {
+export default class FourSteps extends Component {
     render() {
         return (
-            <section className="steps" id="steps">
+            <section className="four-steps" id="four-steps">
                 <h2 className="section-header">
                     Wystarczą 4 proste kroki
                 </h2>
                 <div className="decoration"></div>
-                <div className="user-steps">
+                <div className="user-four-steps">
                     <div className="col">
                         <div className="row">
                             <img src={step1} height="83" alt="shirt" />

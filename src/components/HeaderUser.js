@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-
-export default class UserHeader extends Component {
+export default class HeaderUser extends Component {
     render() {
         return (
             <ul className="user-header">
@@ -13,7 +12,6 @@ export default class UserHeader extends Component {
                     <Link to="/rejestracja">Załóż konto</Link>
                 </li>
             </ul>
-
         )
     }
 }

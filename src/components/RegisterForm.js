@@ -1,31 +1,25 @@
 import React, { Component } from 'react';
-import AltHeader from './AltHeader';
 import { Link } from 'react-router-dom';
+import fire from '../config/Fire';
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
-
-const formValid = ({ formErrors, ...rest }) => {
-    let valid = true;
-
-    //validate form errors being empty
-    Object.values(formErrors).forEach(val => {
-        val.length > 0 && (valid = false)
-    });
-
-    //validate if the form was filled out
-    Object.values(rest).forEach(val => {
-        val === "" && (valid = false);
-    });
-
-    return valid
-}
-
+// const formValid = ({ formErrors, ...rest }) => {
+//     let valid = true;
+//     //validate form errors being empty
+//     Object.values(formErrors).forEach(val => {
+//         val.length > 0 && (valid = false)
+//     });
+//     //validate if the form was filled out
+//     Object.values(rest).forEach(val => {
+//         val === "" && (valid = false);
+//     });
+//     return valid
+// }
 export default class Register extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             email: "",
             password: "",
@@ -37,28 +31,33 @@ export default class Register extends Component {
             }
         }
     }
-    handleSubmit = e => {
+    register = e =>{
         e.preventDefault();
-
-        if (formValid(this.state)) {
-            if (this.state.password === this.state.passwordRepeat) {
-                console.log(`Formularz poprawny:
-            Email: ${this.state.email}
-            Hasło: ${this.state.password}
-            Powtórz hasło: ${this.state.passwordRepeat}`)
-            } else {
-                console.log("Hasła nie są zgodne");
-            }
-        } else {
-            console.error("Formularz niepoprawny")
-        }
-    }
-
+        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+        }).then((u)=>{console.log(u)})
+        .catch((error) => {
+            console.log(error);
+          })
+      }
+    // handleSubmit = e => {
+    //     e.preventDefault();
+    //     if (formValid(this.state)) {
+    //         if (this.state.password === this.state.passwordRepeat) {
+    //             console.log(`Formularz poprawny:
+    //         Email: ${this.state.email}
+    //         Hasło: ${this.state.password}
+    //         Powtórz hasło: ${this.state.passwordRepeat}`)
+    //         } else {
+    //             console.log("Hasła nie są zgodne");
+    //         }
+    //     } else {
+    //         console.error("Formularz niepoprawny")
+    //     }
+    // }
     handleChange = e => {
         e.preventDefault();
         const { name, value } = e.target;
         let formErrors = this.state.formErrors;
-
         switch (name) {
             case 'email':
                 formErrors.email = emailRegex.test(value) ? "" : 'Podany email jest nieprawidłowy!';
@@ -72,22 +71,19 @@ export default class Register extends Component {
             default:
                 break;
         }
-
         this.setState({ formErrors, [name]: value }, () => console.log(this.state))
     }
-
     render() {
         const { formErrors } = this.state;
         const { password, passwordRepeat } = this.state;
         return (
             <>
-                <AltHeader />
                 <section className="register-section">
                     <h2 className="section-header">Załóż konto</h2>
                     <div className="decoration"></div>
                     <form id="login-form"
                         name="login-form"
-                        onSubmit={this.handleSubmit}
+                        onSubmit={this.register}
                         noValidate>
                         <div className="form-area">
                             <div className="form-row">
@@ -131,7 +127,7 @@ export default class Register extends Component {
                                 {formErrors.passwordRepeat.length > 0 && (
                                     <span className="error-message">{formErrors.passwordRepeat}</span>
                                 )}
-                                {passwordRepeat != password && (
+                                {passwordRepeat !== password && (
                                     <span className="error-message">Hasła muszą być takie same!</span>
                                 )}
                             </div>

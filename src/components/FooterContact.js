@@ -1,32 +1,26 @@
 import React, { Component } from 'react';
-import contactImg from '../assets/Background-Contact-Form.jpg';
-import Copyright from './Copyright'
+import ContactImg from '../assets/Background-Contact-Form.jpg';
+import FooterCopyright from './FooterCopyright'
 import axios from 'axios';
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
-
 const formValid = ({ formErrors, ...rest }) => {
     let valid = true;
-
     //validate form errors being empty
     Object.values(formErrors).forEach(val => {
         val.length > 0 && (valid = false)
     });
-
     //validate if the form was filled out
     Object.values(rest).forEach(val => {
         val === "" && (valid = false);
     });
-
     return valid
 }
-
-export default class Register extends Component {
+export default class FooterContact extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             name: "",
             email: "",
@@ -38,13 +32,10 @@ export default class Register extends Component {
             },
         }
     }
-
     handleSubmit = e => {
         e.preventDefault();
-
         const { name, value } = e.target;
         let formSent = this.state.formSent;
-
         if (formValid(this.state)) {
             console.log(`Formularz poprawny:
             Imię: ${this.state.name}
@@ -52,7 +43,7 @@ export default class Register extends Component {
             Wiadomość: ${this.state.message}`);
             formSent = true;
             axios
-                .post('https://fer-api.coderslab.pl/v1/portfolio/contact', this.state)
+                .post('https://fer-api.coderslab.pl/v1/portfolio/Contact', this.state)
                 .then(response => {
                     console.log(response)
                 })
@@ -65,15 +56,13 @@ export default class Register extends Component {
         }
         this.setState({ formSent, [name]: value }, () => console.log(this.state))
     }
-
     handleChange = e => {
         e.preventDefault();
         const { name, value } = e.target;
         let formErrors = this.state.formErrors;
-
         switch (name) {
             case 'name':
-                formErrors.name = value.trim().split(" ").length == 1 ? "" : 'Podane imię jest nieprawidłowe!';
+                formErrors.name = value.trim().split(" ").length === 1 ? "" : 'Podane imię jest nieprawidłowe!';
                 break;
             case 'email':
                 formErrors.email = emailRegex.test(value) ? "" : 'Podany email jest nieprawidłowy!';
@@ -84,36 +73,33 @@ export default class Register extends Component {
             default:
                 break;
         }
-
         this.setState({ formErrors, [name]: value }, () => console.log(this.state))
     }
-
     render() {
         const { formErrors } = this.state;
         const { formSent } = this.state;
-
         return (
-            <section className="contact" id="contact">
-                <div className="contact-background">
-                    <img src={contactImg} alt=""></img>
-                    <div className="contact-form">
+            <section className="footer-contact" id="footer-contact">
+                <div className="footer-contact-background">
+                    <img src={ContactImg} alt=""></img>
+                    <div className="footer-contact-form">
                         <h2 className="section-header">Skontaktuj się z nami</h2>
                         <div className="decoration"></div>
-                        <form id="contact-form"
-                            name="contact-form"
+                        <form id="footer-contact-form"
+                            name="footer-contact-form"
                             onSubmit={this.handleSubmit}
                             noValidate>
-                            {formSent == true && (
+                            {formSent === true && (
                                 <span className="success-message">Wiadomość została wysłana!<br />Wkrótce się skontaktujemy.</span>
                             )}
-                            <div className="contact-form-area">
+                            <div className="footer-contact-form-area">
                                 <div className="rows">
                                     <div className="form-row">
                                         <label for="name">Wpisz swoje imię</label>
                                         <input
                                             type="name"
                                             className={formErrors.name.length > 0 ? "error" : null}
-                                            id="contact-name"
+                                            id="footer-contact-name"
                                             name="name"
                                             autoComplete="off"
                                             placeholder="Krzysztof"
@@ -124,11 +110,11 @@ export default class Register extends Component {
                                         )}
                                     </div>
                                     <div className="form-row form-pass">
-                                        <label for="contact-email">Wpisz swój email</label>
+                                        <label for="footer-contact-email">Wpisz swój email</label>
                                         <input
                                             type="email"
                                             className={formErrors.email.length > 0 ? "error" : null}
-                                            id="contact-email"
+                                            id="footer-contact-email"
                                             name="email"
                                             autoComplete="off"
                                             placeholder="abc@xyz.pl"
@@ -142,7 +128,7 @@ export default class Register extends Component {
                                 <div className="message">
                                     <label for="message">Wpisz swoją wiadomość</label>
                                     <textarea
-                                        form="contact-form"
+                                        form="footer-contact-form"
                                         className={formErrors.message.length > 0 ? "error" : null}
                                         id="message"
                                         name="message"
@@ -164,7 +150,7 @@ export default class Register extends Component {
                         </form>
                     </div>
                 </div>
-                <Copyright />
+                <FooterCopyright />
             </section>
         )
     }

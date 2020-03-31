@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class HomeThreeColumns extends Component {
+export default class ThreeColumns extends Component {
     render() {
         return (
             <section className="yellow-section">

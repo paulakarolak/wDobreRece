@@ -1,11 +1,12 @@
-import React from 'react';
-import AltHeader from './AltHeader';
+import React, { Component } from 'react';
+import HeaderAlt from './HeaderAlt';
 import { Link } from 'react-router-dom';
 
-const LoggedOut = () => {
+export default class LoggedOut extends Component {
+    render() {
     return (
         <>
-            <AltHeader />
+            <HeaderAlt />
             <section className="logout-section">
                 <h2 className="section-header">Wylogowanie nastąpiło<br />pomyślnie!</h2>
                 <div className="decoration"></div>
@@ -18,5 +19,4 @@ const LoggedOut = () => {
         </>
     )
 }
-
-export default LoggedOut;
+}

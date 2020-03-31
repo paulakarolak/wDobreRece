@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
-import UserHeader from './UserHeader';
+import { Link } from 'react-scroll';
+import HeaderUser from './HeaderUser';
 
-export default class AltHeader extends Component {
+export default class HeaderHome extends Component {
     render() {
         return (
             <>
                 <header className="page-header">
                     <div className="page-menu">
-                        <UserHeader />
+                        <HeaderUser />
                         <ul className="page-nav">
                             <li>
                                 <Link to="/">Start</Link>
                             </li>
                             <li>
-                                <Link smooth to="/#steps">O co chodzi?</Link>
+                                <Link to="four-steps" smooth={true} duration={1000}>O co chodzi?</Link>
                             </li>
                             <li>
-                            <Link smooth to="/#about">O nas</Link>
+                            <Link to="about" smooth={true} duration={1000}>O nas</Link>
                             </li>
                             <li>
-                                <Link smooth to="/#entities">Fundacja i organizacje</Link>
+                            <Link to="we-help" smooth={true} duration={1000}>Fundacja i organizacje</Link>
                             </li>
                             <li>
-                            <Link smooth to="/#contact">Kontakt</Link>
+                            <Link to="footer-contact" smooth={true} duration={1000}>Kontakt</Link>
                             </li>
                         </ul>
                     </div>

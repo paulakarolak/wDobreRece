@@ -1,22 +1,22 @@
-import React from 'react';
-import AltHeader from './AltHeader';
+import React, { Component } from 'react';
+import HeaderAlt from './HeaderAlt';
 import { Link } from 'react-router-dom';
 
-const Error = () => {
-    return (
-        <>
-            <AltHeader />
-            <section className="logout-section">
-                <h2 className="section-header">Strona o podanym adresie<br />nie istnieje.</h2>
-                <div className="decoration"></div>
+export default class Error extends Component {
+    render() {
+        return (
+            <>
+                <HeaderAlt />
+                <section className="logout-section">
+                    <h2 className="section-header">Strona o podanym adresie<br />nie istnieje.</h2>
+                    <div className="decoration"></div>
                     <Link className="tile" to="/">
                         <button className="btn-alt active">
                             Strona główna
                     </button>
                     </Link>
-            </section>
-        </>
-    )
+                </section>
+            </>
+        )
+    }
 }
-
-export default Error;
