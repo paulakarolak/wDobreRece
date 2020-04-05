@@ -68,6 +68,38 @@ body {
         }
     }
 }
+.user-header.logged {
+    display: flex;
+    justify-content: flex-end;
+    margin: 37px 0 17px 0;
+    li {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    a {
+        color: black;
+        font-size: 13px;
+        font-weight: normal;
+        padding: 9px 7px;
+        border: 0.75px solid map-get($colors, yellow);
+    }
+    .hello-user {
+        color: rgb(15, 14, 14);
+        font-size: 14px;
+        font-weight: normal;
+        padding: 9px 7px;
+    }
+    .logout {
+        color: map-get($colors, light-grey);
+        font-size: 12px;
+        font-family: $font-base;
+        padding: 7px 7px;
+        border: 0.75px solid transparent;
+        &:hover, &:active {
+            border: 0.75px solid map-get($colors, yellow);
+        }
+    }
+}
 .page-nav {
     display: flex;
     justify-content: flex-end;

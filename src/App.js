@@ -5,6 +5,7 @@ import HomeUser from './components/HomeUser';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import LoggedOut from './components/LoggedOut';
+import GiveAway from './components/GiveAway';
 import Error from './components/Error';
 import fire from './config/Fire';
 
@@ -40,6 +41,7 @@ export default class App extends Component {
             <Route exact path="/logowanie/" component={LoginPage} />
             <Route exact path="/rejestracja/" component={RegisterPage} />
             <Route exact path="/wylogowano/" component={LoggedOut} />
+            <Route exact path="/oddaj-rzeczy/" component={GiveAway} />
             <Route component={Error} />
           </Switch>)
           : (
